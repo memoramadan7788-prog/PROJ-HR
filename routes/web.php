@@ -1,55 +1,48 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\LoginController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\InterviewerController;
+use App\Http\Controllers\SuperAdminController;
+use App\Http\Controllers\SuperAdmin\OrganizationController;
 
 // الصفحة الرئيسية
 Route::get('/', function () {
-    return view('index');
+    return view('auth.login');
 });
 
-// صفحة تسجيل الدخول (عرض القالب عبر الكنترولر)
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-
-// معالجة بيانات تسجيل الدخول (POST عبر الكنترولر)
+// مسارات تسجيل الدخول (Login)
+Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
-
-// تسجيل الخروج
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// صفحة إنشاء حساب جديد (عرض القالب)
-Route::get('/register', function () {
-    return view('auth.register'); 
-})->name('register');
+// مسارات إنشاء الحساب (Register)
+Route::get('/register', [RegisterController::class, 'showRegister'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
 
-// معالجة بيانات إنشاء الحساب (POST)
-Route::post('/register', function (Request $request) {
-    return "Register done successfully for email: " . $request->input('email');
-})->name('register.submit');
+// مسارات التحقق من الإيميل (Verify Email)
+Route::get('/verify-email', [VerificationController::class, 'show'])->name('verification.notice');
+Route::post('/verify-email', [VerificationController::class, 'verify'])->name('verification.verify');
 
-// صفحة التحقق من البريد الإلكتروني (Check Inbox)
-Route::get('/check-inbox', function () {
-    return view('auth.verify');
-})->name('verification.notice');
+// مسارات استعادة كلمة المرور
+Route::get('/reset-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('/reset-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.update');
 
-// صفحة إعادة تعيين كلمة المرور الجديدة (عرض القالب)
-Route::get('/reset-password', function () {
-    return view('auth.reset-password');
-})->name('password.reset');
+// مسارات وحدة المُحاور (Interviewer Module)
+Route::get('/interviewer', [InterviewerController::class, 'index'])->name('interviewer.index');
 
-// معالجة حفظ كلمة المرور الجديدة (POST)
-Route::post('/reset-password', function (Request $request) {
-    return redirect()->route('login')->with('status', 'Password reset successfully!');
-})->name('password.update');
+// -------------------------------------------------------------
+// مسارات السوبر أدمن (Super Admin Routes)
+// -------------------------------------------------------------
+Route::prefix('superadmin')->name('superadmin.')->group(function () {
+    
+    // صفحة الـ SuperAdmin الرئيسية (/superadmin)
+    Route::get('/', [SuperAdminController::class, 'index'])->name('dashboard');
+    
+    // صفحة الـ Organizations (/superadmin/organizations)
+    Route::get('/organizations', [OrganizationController::class, 'index'])->name('organizations.index');
+
+});

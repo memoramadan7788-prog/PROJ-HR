@@ -2,7 +2,6 @@
 @extends('components.layout');
 @section('content')
 
-    <!-- Hero Section -->
     <section class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 py-16 px-8 md:px-16 transition-colors">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
             <!-- Left Texts & Buttons -->
@@ -23,7 +22,6 @@
                 </div>
             </div>
 
-            <!-- Right Illustration -->
             <div class="flex-1 flex justify-center">
                 <img src="https://cdni.iconscout.com/illustration/premium/thumb/hr-management-illustration-download-in-svg-png-gif-file-formats--human-resource-recruitment-hiring-business-scenes-pack-illustrations-3783957.png?f=webp&w=600" 
                      alt="HR Management" 
@@ -32,7 +30,6 @@
         </div>
     </section>
 
-    <!-- Our Platform in Numbers Section -->
     <section class="max-w-7xl mx-auto my-8 px-6 md:px-8">
         <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 md:p-8 transition-colors">
             <!-- Header Title -->
@@ -40,7 +37,6 @@
                 Our Platform in Numbers
             </h3>
 
-            <!-- Statistics Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                 <!-- Stat 1: Companies -->
                 <div class="flex items-center gap-4">
@@ -55,7 +51,6 @@
                     </div>
                 </div>
 
-                <!-- Stat 2: Candidates -->
                 <div class="flex items-center gap-4">
                     <div class="p-3.5 bg-blue-50 dark:bg-gray-700 rounded-xl text-[#0f62fe] dark:text-blue-400">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -68,7 +63,6 @@
                     </div>
                 </div>
 
-                <!-- Stat 3: Job Listings -->
                 <div class="flex items-center gap-4">
                     <div class="p-3.5 bg-blue-50 dark:bg-gray-700 rounded-xl text-[#0f62fe] dark:text-blue-400">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -81,7 +75,6 @@
                     </div>
                 </div>
 
-                <!-- Stat 4: Applications Processed -->
                 <div class="flex items-center gap-4">
                     <div class="p-3.5 bg-blue-50 dark:bg-gray-700 rounded-xl text-[#0f62fe] dark:text-blue-400">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -97,7 +90,6 @@
         </div>
     </section>
 
-    <!-- Most Searched Section -->
     <section class="max-w-7xl mx-auto my-12 px-6 md:px-8">
         <!-- Title with Dividers -->
         <div class="flex items-center justify-center my-8">
@@ -112,7 +104,6 @@
             <div class="flex-grow max-w-xs border-t border-gray-300 dark:border-gray-700"></div>
         </div>
 
-        <!-- Category Tabs -->
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 max-w-5xl mx-auto">
             <!-- Tab 1: IT & Software -->
             <button onclick="switchTab('it_tab')" id="btn-it_tab" class="category-tab flex items-center justify-center gap-2.5 px-4 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-blue-600 shadow-sm transition hover:shadow-md">
@@ -120,34 +111,28 @@
                 <span class="font-bold text-sm text-gray-800 dark:text-white">IT & Software</span>
             </button>
 
-            <!-- Tab 2: Marketing -->
             <button onclick="switchTab('marketing_tab')" id="btn-marketing_tab" class="category-tab flex items-center justify-center gap-2.5 px-4 py-3 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm transition hover:shadow-md">
                 <span class="text-2xl">📢</span>
                 <span class="font-bold text-sm text-gray-800 dark:text-white">Marketing</span>
             </button>
 
-            <!-- Tab 3: Finance -->
             <button onclick="switchTab('finance_tab')" id="btn-finance_tab" class="category-tab flex items-center justify-center gap-2.5 px-4 py-3 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm transition hover:shadow-md">
                 <span class="text-2xl">💼</span>
                 <span class="font-bold text-sm text-gray-800 dark:text-white">Finance</span>
             </button>
 
-            <!-- Tab 4: Human Resources -->
             <button onclick="switchTab('hr_tab')" id="btn-hr_tab" class="category-tab flex items-center justify-center gap-2.5 px-4 py-3 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm transition hover:shadow-md">
                 <span class="text-2xl">📝</span>
                 <span class="font-bold text-sm text-gray-800 dark:text-white">Human Resources</span>
             </button>
 
-            <!-- Tab 5: Sales -->
             <button onclick="switchTab('sales_tab')" id="btn-sales_tab" class="category-tab flex items-center justify-center gap-2.5 px-4 py-3 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm transition hover:shadow-md">
                 <span class="text-2xl">👨‍💼</span>
                 <span class="font-bold text-sm text-gray-800 dark:text-white">Sales</span>
             </button>
         </div>
 
-        <!-- Tab Contents Container -->
         <div class="mt-8 max-w-5xl mx-auto">
-            <!-- Content 1: IT & Software (المصلح والمستعاد) -->
             <div id="it_tab" class="tab-content grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="bg-white dark:bg-gray-800 p-5 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition">
                     <span class="text-xs font-bold text-blue-600 bg-blue-50 dark:bg-gray-700 px-2.5 py-1 rounded-md">Full Time</span>
@@ -169,7 +154,6 @@
                 </div>
             </div>
 
-            <!-- Content 2: Marketing -->
             <div id="marketing_tab" class="tab-content hidden grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="bg-white dark:bg-gray-800 p-5 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition">
                     <span class="text-xs font-bold text-blue-600 bg-blue-50 dark:bg-gray-700 px-2.5 py-1 rounded-md">Full Time</span>
@@ -185,7 +169,6 @@
                 </div>
             </div>
 
-            <!-- Content 3: Finance -->
             <div id="finance_tab" class="tab-content hidden grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="bg-white dark:bg-gray-800 p-5 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition">
                     <span class="text-xs font-bold text-blue-600 bg-blue-50 dark:bg-gray-700 px-2.5 py-1 rounded-md">Full Time</span>
@@ -195,7 +178,6 @@
                 </div>
             </div>
 
-            <!-- Content 4: Human Resources -->
             <div id="hr_tab" class="tab-content hidden grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="bg-white dark:bg-gray-800 p-5 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition">
                     <span class="text-xs font-bold text-blue-600 bg-blue-50 dark:bg-gray-700 px-2.5 py-1 rounded-md">Full Time</span>
@@ -205,7 +187,6 @@
                 </div>
             </div>
 
-            <!-- Content 5: Sales -->
             <div id="sales_tab" class="tab-content hidden grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="bg-white dark:bg-gray-800 p-5 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition">
                     <span class="text-xs font-bold text-blue-600 bg-blue-50 dark:bg-gray-700 px-2.5 py-1 rounded-md">Full Time</span>
@@ -217,7 +198,6 @@
         </div>
     </section>
 
-    <!-- 1. Selection Modal -->
     <div id="registerModal" class="fixed inset-0 bg-black/60 hidden flex justify-center items-center z-50 p-4 backdrop-blur-sm">
         <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-2xl w-96 text-center border border-gray-100 dark:border-gray-700 transition-colors">
             <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white" data-en="Create an Account" data-ar="إنشاء حساب جديد">Create an Account</h3>
@@ -238,11 +218,9 @@
         </div>
     </div>
 
-    <!-- 2. Candidate Registration Form Modal -->
     <div id="employerFormModal" class="fixed inset-0 bg-black/70 hidden flex justify-center items-center z-50 p-4 backdrop-blur-sm">
         <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-full max-w-lg flex flex-col my-auto border border-gray-100 dark:border-gray-700 transition-colors">
 
-            <!-- Header -->
             <div class="p-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-gray-50 dark:bg-gray-800 rounded-t-2xl">
                 <div>
                     <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Candidate Registration</h3>
@@ -251,7 +229,6 @@
                 <button onclick="closeModal('employerFormModal')" class="text-2xl font-bold text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">&times;</button>
             </div>
 
-            <!-- Form Body -->
             <form action="#" method="POST" class="p-6 space-y-5">
                 @csrf
                 <div>
@@ -269,7 +246,6 @@
                     <input type="password" name="password" placeholder="••••••••" required class="w-full px-3.5 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm">
                 </div>
 
-                <!-- Footer Actions -->
                 <div class="pt-4 border-t border-gray-200 dark:border-gray-700 flex justify-end gap-3">
                     <button type="button" onclick="closeModal('employerFormModal')" class="px-5 py-2.5 text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition">
                         Cancel
@@ -282,11 +258,9 @@
         </div>
     </div>
 
-    <!-- 3. Company Registration Form Modal -->
     <div id="companyFormModal" class="fixed inset-0 bg-black/70 hidden flex justify-center items-center z-50 p-4 backdrop-blur-sm">
         <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-full max-w-lg flex flex-col my-auto border border-gray-100 dark:border-gray-700 transition-colors">
 
-            <!-- Header -->
             <div class="p-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-gray-50 dark:bg-gray-800 rounded-t-2xl">
                 <div>
                     <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Company Registration</h3>
@@ -295,7 +269,6 @@
                 <button onclick="closeModal('companyFormModal')" class="text-2xl font-bold text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">&times;</button>
             </div>
 
-            <!-- Form Body -->
             <form action="#" method="POST" class="p-6 space-y-5">
                 @csrf
                 <div>
@@ -313,7 +286,6 @@
                     <input type="password" name="password" placeholder="••••••••" required class="w-full px-3.5 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm">
                 </div>
 
-                <!-- Form Actions -->
                 <div class="pt-4 border-t border-gray-200 dark:border-gray-700 flex justify-end gap-3">
                     <button type="button" onclick="closeModal('companyFormModal')" class="px-5 py-2.5 text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition">
                         Cancel
@@ -326,7 +298,6 @@
         </div>
     </div>
 
-    <!-- 4. Email Verification Notice Modal -->
     <div id="verificationModal" class="fixed inset-0 bg-black/70 hidden flex justify-center items-center z-50 p-4 backdrop-blur-sm">
         <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-2xl w-full max-w-md text-center border border-gray-100 dark:border-gray-700 transition-colors">
             <!-- Icon -->
@@ -349,7 +320,6 @@
                     </button>
                 </form>
 
-                <!-- Logout / Close Option -->
                 <button onclick="closeModal('verificationModal')" class="w-full py-2.5 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-xl transition text-sm" data-en="Close / Back to Home" data-ar="إغلاق / العودة للرئيسية">
                     Close / Back to Home
                 </button>
@@ -357,7 +327,6 @@
         </div>
     </div>
 
-    <!-- JavaScript Functions -->
     <script>
         // Modal Control Functions
         function openModal(id) {
@@ -379,7 +348,6 @@
             openModal(openId);
         }
 
-        // Tab Switching Function for "Most Searched"
         function switchTab(targetTabId) {
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.add('hidden'));
@@ -402,7 +370,6 @@
             }
         }
 
-        // Language Switcher Function
         let currentLang = 'EN';
         function toggleLanguage() {
             currentLang = currentLang === 'EN' ? 'AR' : 'EN';

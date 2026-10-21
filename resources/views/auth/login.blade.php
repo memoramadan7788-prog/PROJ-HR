@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,16 +36,14 @@
                 </ul>
             </div>
             
-            <div class="text-[11px] text-gray-400 flex space-x-3 pt-4 items-center">
-                <span>Hirebridge</span>
-                <span>•</span>
-                <a href="javascript:void(0);" class="hover:underline">Privacy</a>
-                <span>•</span>
-                <a href="javascript:void(0);" class="hover:underline">Help</a>
+            <div class="text-[11px] text-gray-400 flex space-x-3 pt-4">
+                
+                
+                
             </div>
         </div>
-
-        <!-- Main Content -->
+        
+        <!-- Main Form Content -->
         <div class="w-2/3 px-12 py-6 flex flex-col justify-between overflow-y-auto">
             <div>
                 <p class="text-xs text-gray-400 text-right mb-2">HR / Account Updates</p>
@@ -53,8 +51,7 @@
                 <div class="max-w-md mx-auto">
                     <h2 class="text-xl font-bold text-gray-800 mb-1">Welcome back</h2>
                     <p class="text-xs text-gray-500 mb-4">Sign in to continue your hiring journey.</p>
-
-                    <!-- Social / SSO Buttons -->
+                
                     <div class="space-y-2 mb-4">
                         <button type="button" class="w-full border border-gray-300 py-2 rounded text-xs font-medium text-gray-700 hover:bg-gray-50 flex items-center justify-center gap-2">
                             <i class="fab fa-google text-red-500"></i> Continue with Google
@@ -66,24 +63,32 @@
 
                     <hr class="my-4 border-gray-200" />
 
-                    <!-- Login Form -->
+                    @if ($errors->any())
+                        <div class="bg-red-50 border border-red-200 p-3 rounded mb-4 text-xs text-red-600">
+                            @foreach ($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                        </div>
+                    @endif
+
                     <form action="{{ route('login.submit') }}" method="POST" class="space-y-3">
                         @csrf
+                        
                         <div>
                             <label class="block text-xs font-medium text-gray-700 mb-1">Email address</label>
-                            <input type="email" name="email" value="maria@workstyle.com" class="w-full px-3 py-1.5 border border-gray-300 rounded text-xs focus:outline-none focus:border-blue-600" required>
+                            <input type="email" name="email" value="{{ old('email') }}" class="w-full px-3 py-1.5 border border-gray-300 rounded text-xs focus:outline-none focus:border-blue-600" required placeholder="maria@workstyle.com">
                         </div>
 
                         <div>
                             <label class="block text-xs font-medium text-gray-700 mb-1">Password</label>
-                            <input type="password" name="password" value="••••••••" class="w-full px-3 py-1.5 border border-gray-300 rounded text-xs focus:outline-none focus:border-blue-600" required>
+                            <input type="password" name="password" class="w-full px-3 py-1.5 border border-gray-300 rounded text-xs focus:outline-none focus:border-blue-600" required placeholder="••••••••">
                         </div>
 
                         <div class="flex items-center justify-between text-xs mt-1">
-                            <label class="flex items-center text-gray-600 cursor-pointer">
-                                <input type="checkbox" class="rounded border-gray-300 mr-2"> Keep me signed in on this device
+                            <label class="flex items-center text-gray-600">
+                                <input type="checkbox" name="remember" class="rounded border-gray-300 mr-2"> Keep me signed in on this device
                             </label>
-                            <a href="javascript:void(0);" class="text-blue-600 hover:underline">Forgot username?</a>
+                            <a href="{{ url('/reset-password') }}" class="text-blue-600 hover:underline">Forgot password?</a>
                         </div>
 
                         <button type="submit" class="w-24 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded text-xs transition">
@@ -95,12 +100,11 @@
                         Your account determines your available workspace. If you have multiple roles, you can switch after signing in.
                     </p>
 
-                    <!-- New to Hirebridge -->
                     <div class="mt-4 border-t pt-3">
                         <p class="text-xs font-semibold text-gray-700 mb-1">New to Hirebridge?</p>
-                        <button type="button" class="border border-gray-300 px-4 py-1.5 rounded text-xs font-medium text-gray-700 hover:bg-gray-50">
+                        <a href="{{ url('/register') }}" class="inline-block border border-gray-300 px-4 py-1.5 rounded text-xs font-medium text-gray-700 hover:bg-gray-50 text-center">
                             Create an account
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

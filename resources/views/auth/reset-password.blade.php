@@ -23,7 +23,6 @@
                     ONE CONNECTION. YOUR NEXT CHAPTER.
                 </p>
 
-                <!-- Hero Text -->
                 <h1 class="text-2xl font-bold leading-tight mb-4">
                     Good work starts with the right connection.
                 </h1>
@@ -34,7 +33,6 @@
 
                 <hr class="border-gray-700 my-4" />
 
-                <!-- Left Features List -->
                 <ul class="space-y-2 text-xs text-gray-300">
                     <li>Designed around people.</li>
                     <li>Transparent opportunities</li>
@@ -43,13 +41,12 @@
                 </ul>
             </div>
 
-            <!-- Left Footer Links -->
             <div class="text-[11px] text-gray-400 flex space-x-3 pt-4">
                 <span>Hirebridge</span>
                 <span>•</span>
-                <a href="#" class="hover:underline">Privacy</a>
+                <a href="javascript:void(0);" class="hover:underline">Privacy</a>
                 <span>•</span>
-                <a href="#" class="hover:underline">Help</a>
+                <a href="javascript:void(0);" class="hover:underline">Help</a>
             </div>
         </div>
 
@@ -59,12 +56,22 @@
                     <h2 class="text-2xl font-bold text-gray-800 mb-1">Set a new password</h2>
                     <p class="text-xs text-gray-500 mb-4">Choose a strong password you haven't used for this account.</p>
 
+                    @if ($errors->any())
+                        <div class="bg-red-50 border border-red-200 p-3 rounded mb-4 text-xs text-red-600">
+                            @foreach ($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                        </div>
+                    @endif
+
                     <!-- Reset Password Form -->
                     <form action="{{ route('password.update') }}" method="POST" class="space-y-3">
+                        @csrf
                         
-                        <input type="hidden" name="email" value="maya.chen@example.com">
+                        <!-- Token if needed by Laravel password reset -->
+                        <input type="hidden" name="token" value="{{ request()->route('token') ?? '' }}">
+                        <input type="hidden" name="email" value="{{ request()->email ?? 'maya.chen@example.com' }}">
 
-                        <!-- New Password Input -->
                         <div>
                             <label for="password" class="block text-xs font-medium text-gray-700 mb-1">New password *</label>
                             <div class="relative">
@@ -77,7 +84,6 @@
                             </div>
                         </div>
 
-                        <!-- Confirm Password Input -->
                         <div>
                             <label for="password_confirmation" class="block text-xs font-medium text-gray-700 mb-1">Confirm new password *</label>
                             <div class="relative">
@@ -90,13 +96,11 @@
                             </div>
                         </div>
 
-                        <!-- Password Match Indicator -->
                         <div id="match-indicator" class="flex items-center space-x-1 text-gray-400 text-[11px] font-medium hidden">
                             <span id="match-icon">●</span>
                             <span id="match-text">Passwords match</span>
                         </div>
 
-                        <!-- Password Requirements Box -->
                         <div class="bg-gray-50 border border-gray-200 rounded p-3 space-y-1.5 mt-2">
                             <h4 class="text-xs font-bold text-gray-800">Password requirements</h4>
                             <ul class="space-y-1 text-[11px] text-gray-600">
@@ -147,7 +151,6 @@
         </div>
     </div>
 
-    <!-- Scripts for Validation, Requirements live update & Password Toggle -->
     <script>
         const password = document.getElementById('password');
         const confirmPassword = document.getElementById('password_confirmation');
@@ -160,7 +163,6 @@
         const reqSymbol = document.getElementById('req-symbol');
         const reqDiff = document.getElementById('req-diff');
 
-        // Toggle Password Visibility
         const togglePassword = document.getElementById('toggle-password');
         const eyeIcon = document.getElementById('eye-icon');
 
@@ -203,7 +205,6 @@
         function checkPasswords() {
             const val = password.value;
 
-            // 1. Length check (At least 12 chars)
             if (val.length >= 12) {
                 reqLength.classList.remove('text-gray-400');
                 reqLength.classList.add('text-emerald-600', 'font-medium');
@@ -212,7 +213,6 @@
                 reqLength.classList.remove('text-emerald-600', 'font-medium');
             }
 
-            // 2. Number check
             if (/\d/.test(val)) {
                 reqNumber.classList.remove('text-gray-400');
                 reqNumber.classList.add('text-emerald-600', 'font-medium');
@@ -221,7 +221,6 @@
                 reqNumber.classList.remove('text-emerald-600', 'font-medium');
             }
 
-            // 3. Symbol check
             if (/[^A-Za-z0-9]/.test(val)) {
                 reqSymbol.classList.remove('text-gray-400');
                 reqSymbol.classList.add('text-emerald-600', 'font-medium');
@@ -230,7 +229,6 @@
                 reqSymbol.classList.remove('text-emerald-600', 'font-medium');
             }
 
-            // 4. Different from previous (mock rule: assuming valid if not empty and > 0)
             if (val.length > 0) {
                 reqDiff.classList.remove('text-gray-400');
                 reqDiff.classList.add('text-emerald-600', 'font-medium');
